@@ -1,4 +1,4 @@
-FROM adoptopenjdk:15-jdk-openj9
+FROM adoptopenjdk:16-jdk-openj9
 
 CMD ["gradle"]
 
@@ -32,8 +32,8 @@ RUN apt-get update \
         subversion \
     && rm -rf /var/lib/apt/lists/*
 
-ENV GRADLE_VERSION 6.8.3
-ARG GRADLE_DOWNLOAD_SHA256=7faa7198769f872826c8ef4f1450f839ec27f0b4d5d1e51bade63667cbccd205
+ENV GRADLE_VERSION 7.0-rc-2
+ARG GRADLE_DOWNLOAD_SHA256=a5db0c919dfd184f7408ca761b438853b55ceab20d7ebb41ea3f72befd8bfb3f
 RUN set -o errexit -o nounset \
     && echo "Downloading Gradle" \
     && wget --no-verbose --output-document=gradle.zip "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip" \
