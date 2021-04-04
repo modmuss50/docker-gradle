@@ -32,13 +32,4 @@ jobs:
           version: ${{ matrix.version }}
         run: |
           cd "${jvm}/${jvmType}${version}"
-          docker buildx build --platform=linux/amd64 --push --tag "ghcr.io/${{ github.repository_owner }}/gradle:${jvmType}${version}-${jvm}" .
-      - name: test
-        env:
-          jvm: ${{ matrix.jvm }}
-          jvmType: ${{ matrix.jvmType }}
-          version: ${{ matrix.version }}
-          expectedGradleVersion: 7.0-rc-2
-        run: |
-          cd test
-          ./run.sh "ghcr.io/${{ github.repository_owner }}/gradle:${jvmType}${version}-${jvm}" "${expectedGradleVersion}"
+          docker buildx build --platform=linux/amd64 --push --tag "ghcr.io/${{ github.repository_owner }}/gradle:7.0-rc-2-${jvmType}${version}-${jvm}" .
